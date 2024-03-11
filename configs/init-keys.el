@@ -1,3 +1,12 @@
+
+(defun mgli-copy-current-file-name ()
+  (interactive)
+  (if-let ((file-name (buffer-file-name)))
+      (progn
+        (kill-new file-name)
+        (message "Copied file name '%s' to the clipboard." file-name))
+    (message "Current buffer is not associated with a file.")))
+
 (use-package general
   :after evil
   :config
@@ -20,6 +29,7 @@
     "f" (cons "files" (make-sparse-keymap))
     "ff" 'find-file
     "fd" 'dired-jump
+		"fc" 'mgli-copy-current-file-name
 
     "p" (cons "project" (make-sparse-keymap))
     "pp" 'projectile-switch-project
