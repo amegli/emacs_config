@@ -35,4 +35,6 @@
 (setq eldoc-idle-delay .1)
 (setq eldoc-echo-area-use-multiline-p nil)
 
+(use-package racket-mode)
+
 (provide 'init-code)
