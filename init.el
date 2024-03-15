@@ -46,5 +46,6 @@
 (require 'init-code)
 (require 'init-haskell)
 (require 'init-javascript)
+(require 'init-php)
 (require 'init-terminal)
 (require 'init-dashboard)

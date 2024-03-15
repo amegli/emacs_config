@@ -35,4 +35,10 @@
 (setq eldoc-idle-delay .1)
 (setq eldoc-echo-area-use-multiline-p nil)
 
+(use-package yaml-mode)
+
+;; Worth it??
+(use-package dumb-jump
+  :hook (xref-backend-functions . dumb-jump-xref-activate))
+
 (provide 'init-code)

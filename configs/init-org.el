@@ -49,4 +49,7 @@
 
 (setq org-agenda-files '("~/Documents/org"))
 
+(setq org-use-sub-superscripts nil)
+(setq org-export-with-sub-superscripts nil)
+
 (provide 'init-org)

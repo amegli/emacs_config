@@ -44,4 +44,26 @@
 (fringe-mode 0)
 (column-number-mode)
 
+;; (use-package current-window-only
+;;   :straight (current-window-only
+;;              :type git
+;;              :host github
+;;              :repo "FrostyX/current-window-only")
+;;   :config
+;;   (current-window-only-mode))
+
+(use-package popper
+  :bind (("C-`"   . popper-toggle)
+         ("M-`"   . popper-cycle)
+         ("C-M-`" . popper-toggle-type))
+  :init
+  (setq popper-reference-buffers
+        '("\\*Messages\\*"
+          "Output\\*$"
+          "\\*Async Shell Command\\*"
+          help-mode
+          compilation-mode))
+  (popper-mode +1)
+  (popper-echo-mode +1))
+
 (provide 'init-ui)

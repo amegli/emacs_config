@@ -11,4 +11,6 @@
 (use-package all-the-icons-dired
   :hook (dired-mode . all-the-icons-dired-mode))
 
+(use-package rg)
+
 (provide 'init-project)

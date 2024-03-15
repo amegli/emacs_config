@@ -45,6 +45,9 @@
 				(defalias (car alias) (cdr alias)))
       my/eshell-aliases)
 
+(setq term-buffer-maximum-size 10000) 
+(setq eshell-buffer-maximum-lines 10000)
+
 (use-package eshell-syntax-highlighting
   :after eshell-mode
   :ensure t 
