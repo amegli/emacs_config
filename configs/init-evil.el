@@ -7,6 +7,8 @@
   (evil-mode 1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state))
 
+(define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
+
 (use-package evil-collection
   :after evil
   :ensure t

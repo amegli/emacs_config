@@ -44,4 +44,17 @@
 (fringe-mode 0)
 (column-number-mode)
 
+(use-package spacious-padding
+	:init
+	(spacious-padding-mode 1))
+
+(setq display-buffer-alist
+			'(("\\*Help\\*"
+				 (display-buffer-below-selected)
+				 (window-height . 0.5)
+				 (reusable-frames . nil)
+				 (window . selected-window))))
+
+(setq help-window-select t)
+
 (provide 'init-ui)

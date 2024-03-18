@@ -10,7 +10,7 @@
 
 (defvar mgli-backup-folder (concat user-emacs-directory "backups"))
 (unless (file-exists-p mgli-backup-folder)
-        (make-directory mgli-backup-folder t))
+  (make-directory mgli-backup-folder t))
 (setq backup-directory-alist `(("." . ,mgli-backup-folder)))
 
 (defvar mgli-auto-save-folder (expand-file-name "~/.emacs.d/auto-saves/"))
@@ -19,5 +19,7 @@
 (setq auto-save-file-name-transforms `((".*" , mgli-auto-save-folder t)))
 
 (setq ring-bell-function 'ignore)
+
+(add-hook 'text-mode-hook 'visual-line-mode)
 
 (provide 'init-setup)

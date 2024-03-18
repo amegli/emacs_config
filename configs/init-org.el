@@ -9,6 +9,8 @@
                   (org-level-8 . 1.0)))
     (set-face-attribute (car face) nil :font "Hack Nerd Font" :weight 'regular :height (cdr face))))
 
+(setq org-agenda-window-setup 'other-tab)
+
 (use-package org
   :straight (:type built-in)
   :config
@@ -48,5 +50,8 @@
   )
 
 (setq org-agenda-files '("~/Documents/org"))
+
+(setq org-use-sub-superscripts nil)
+(setq org-export-with-sub-superscripts nil)
 
 (provide 'init-org)

@@ -37,4 +37,10 @@
 
 (use-package racket-mode)
 
+(use-package yaml-mode)
+
+;; Worth it??
+(use-package dumb-jump
+  :hook (xref-backend-functions . dumb-jump-xref-activate))
+
 (provide 'init-code)
