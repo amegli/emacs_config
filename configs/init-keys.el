@@ -45,6 +45,7 @@
 		
 		"o" (cons "org" (make-sparse-keymap))
 		"oc" 'org-toggle-checkbox
+		"oo" 'org-capture
 		"oa" 'org-agenda
 		"op" 'evil-org-open-below
 
