@@ -49,11 +49,34 @@
 	(spacious-padding-mode 1))
 
 (setq display-buffer-alist
-			'(("\\*Help\\*"
+			'(
+				("\\*Help\\*"
 				 (display-buffer-below-selected)
 				 (window-height . 0.5)
 				 (reusable-frames . nil)
-				 (window . selected-window))))
+				 (window . selected-window))
+				("\\*rg\\*"
+				 (display-buffer-below-selected)
+				 (window-height . 0.5)
+				 (reusable-frames . nil)
+				 (window . selected-window))
+				("\\*Flycheck errors\\*"
+				 (display-buffer-below-selected)
+				 (window-height . 0.5)
+				 (reusable-frames . nil)
+				 (window . selected-window))
+				("\\*jest\\*"
+				 (display-buffer-below-selected)
+				 (window-height . 0.5)
+				 (reusable-frames . nil)
+				 (window . selected-window))
+				("\\*jest-test-compilation\\*"
+				 (display-buffer-below-selected)
+				 (window-height . 0.5)
+				 (reusable-frames . nil)
+				 (window . selected-window))
+				)
+			)
 
 (setq help-window-select t)
 

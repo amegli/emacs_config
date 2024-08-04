@@ -45,6 +45,7 @@
 (require 'init-org)
 (require 'init-code)
 (require 'init-haskell)
+(require 'init-elixir)
 (require 'init-javascript)
 (require 'init-php)
 (require 'init-terminal)
