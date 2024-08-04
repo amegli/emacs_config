@@ -38,8 +38,8 @@
 				(up . eshell-up)
 				(pk . eshell-up-peek)
 				(l  . (lambda () (eshell/ls '-la)))
-				(clear . clear-scrollback)))
-;;(eshell/clear . eshell/clear-scrollback)))
+				(eshell/clear . eshell/clear-scrollback)))
+																				;(eshell/clear . eshell/clear-scrollback)))
 
 (mapc (lambda (alias)
 				(defalias (car alias) (cdr alias)))
@@ -53,5 +53,7 @@
   :ensure t 
   :config
   (eshell-syntax-highlighting-global-mode +1))
+
+(setq tramp-default-method "ssh")
 
 (provide 'init-terminal)
