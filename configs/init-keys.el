@@ -87,8 +87,9 @@
 		"el" 'flycheck-list-errors
 
 		"j" (cons "jest" (make-sparse-keymap))
-		"jb" 'jest-file-dwim
-		"jp" 'jest-function
+		"jb" 'jest-test-run
+		"jp" 'jest-test-run-at-point
+		"ja" 'jest-test-run-all-tests
 		"jj" 'jest-popup
 
 		"c" (cons "code" (make-sparse-keymap))
