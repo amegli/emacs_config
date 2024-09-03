@@ -22,6 +22,7 @@
                           (bookmarks . 5)
                           (projects  . 10)
                           (registers . 5)))
+	(setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
   (dashboard-setup-startup-hook)
   (dashboard-open))
 

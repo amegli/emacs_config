@@ -12,6 +12,7 @@
   :hook (prog-mode . apheleia-mode)
   :config
   (add-to-list 'apheleia-mode-alist '(js-mode . prettier))
+  (add-to-list 'apheleia-mode-alist '(php-mode . prettier))
   (apheleia-global-mode t))
 
 (setq-default tab-width 2)
@@ -36,8 +37,8 @@
 (setq eldoc-echo-area-use-multiline-p nil)
 
 (use-package racket-mode)
-
 (use-package yaml-mode)
+(use-package purescript-mode)
 
 ;; Worth it??
 (use-package dumb-jump

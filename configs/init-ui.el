@@ -16,7 +16,7 @@
   :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package doom-themes
-  :init (load-theme 'doom-gruvbox-light t))
+  :init (load-theme 'doom-zenburn t))
 
 (use-package doom-modeline
   :ensure t
