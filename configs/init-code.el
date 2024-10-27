@@ -29,9 +29,6 @@
   :config
   (global-flycheck-eglot-mode 1))
 
-(use-package flycheck-pos-tip
-  :hook (flycheck-mode . flycheck-pos-tip-mode))
-
 (setq eldoc-echo-area-prefer-doc-buffer t)
 (setq eldoc-idle-delay .1)
 (setq eldoc-echo-area-use-multiline-p nil)

@@ -57,11 +57,15 @@
 		"p" (cons "project" (make-sparse-keymap))
 		"pp" 'projectile-switch-project
 		"pf" 'projectile-find-file
+		"pd" 'projectile-find-dir
 		"ps" 'projectile-ripgrep
+		"pb" 'projectile-ibuffer
 
 		"g" (cons "magit" (make-sparse-keymap))
 		"gg" 'magit
 		"gb" 'magit-blame-addition
+		"gfl" 'magit-log-buffer-file
+		"gl" 'magit-log-current
 
 		"t" (cons "terminal" (make-sparse-keymap))
 		"tb" 'mgli/bottom-eshell
@@ -74,6 +78,7 @@
 		"ha" 'apropos-command
 		"hb" 'describe-bindings
 		"hk" 'describe-key
+		"hf" 'describe-function
 
 		"b" (cons "buffer" (make-sparse-keymap))
 		"bl" 'consult-buffer
@@ -93,6 +98,7 @@
 		"jj" 'jest-popup
 
 		"c" (cons "code" (make-sparse-keymap))
+		"cd" 'eldoc-doc-buffer
 		"cc" 'comment-dwim
 		"cr" 'xref-find-references
 		"cn" 'xref-find-references-and-replace

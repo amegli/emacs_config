@@ -16,6 +16,17 @@
 (use-package vterm
   :ensure t)
 
+(use-package eat
+	:straight t
+  :custom
+  (eat-term-name "xterm-256color")
+  :custom-face
+  (ansi-color-bright-blue ((t (:foreground "#00afff" :background "#00afff"))))
+  :config
+  (evil-set-initial-state 'eat-mode 'emacs)
+  (eat-eshell-mode)
+  (eat-eshell-visual-command-mode))
+
 (use-package eshell-git-prompt)
 (use-package eshell
   :hook 
