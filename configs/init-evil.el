@@ -17,4 +17,7 @@
 
 (evil-set-undo-system 'undo-redo)
 
+;; Make C-. available for embark-act instead
+(define-key evil-normal-state-map (kbd "C-.") nil)
+
 (provide 'init-evil)

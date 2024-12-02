@@ -11,6 +11,7 @@
   "Path to the milton configuration file.")
 
 (defun mgli-milton (action environment)
+	"Make milton go"
 	(interactive
 	 (list
 		(read-string "Action (upload, info, diff...) [default upload]: " nil nil "upload")
@@ -21,8 +22,13 @@
 												 (concat (file-name-as-directory milton-config-path)
 																 environment ".config.json"
 																 )))))
-		(with-output-to-temp-buffer "*mgli-milton-output*"
+		(with-help-window "*mgli-milton-output*"
 			(princ output))))
+
+(defun mgli-consult-ripgrep ()
+	(interactive)
+	(let ((current_symbol (symbol-at-point)))
+		(consult-ripgrep nil (when current_symbol (symbol-name current_symbol)))))
 
 (use-package general
 	:after evil
@@ -58,8 +64,11 @@
 		"pp" 'projectile-switch-project
 		"pf" 'projectile-find-file
 		"pd" 'projectile-find-dir
-		"ps" 'projectile-ripgrep
+		"pr" 'projectile-ripgrep
 		"pb" 'projectile-ibuffer
+		"ps" (cons "project search" (make-sparse-keymap))
+		"pss" 'mgli-consult-ripgrep
+		"psr" 'consult-ripgrep
 
 		"g" (cons "magit" (make-sparse-keymap))
 		"gg" 'magit
@@ -85,6 +94,7 @@
 		"bp" 'previous-buffer
 		"bn" 'next-buffer
 		"bk" 'kill-buffer
+		"br" 'consult-recent-file
 
 		"e" (cons "errors" (make-sparse-keymap))
 		"en" 'flycheck-next-error
@@ -98,6 +108,7 @@
 		"jj" 'jest-popup
 
 		"c" (cons "code" (make-sparse-keymap))
+		"cs" 'consult-eglot-symbols
 		"cd" 'eldoc-doc-buffer
 		"cc" 'comment-dwim
 		"cr" 'xref-find-references

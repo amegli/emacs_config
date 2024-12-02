@@ -3,6 +3,8 @@
 
 (use-package consult-eglot)
 
+(define-key minibuffer-local-map (kbd "C-c C-n") #'evil-normal-state)
+
 ;; Attempt to guess indent style of buffer
 (use-package dtrt-indent
   :init (dtrt-indent-global-mode t))
@@ -31,15 +33,11 @@
 
 (setq eldoc-echo-area-prefer-doc-buffer t)
 (setq eldoc-idle-delay .1)
-(setq eldoc-echo-area-use-multiline-p nil)
+(setq eldoc-echo-area-use-multiline-p 4)
 
 (use-package racket-mode)
 (use-package yaml-mode)
 (use-package purescript-mode)
-
-;; Worth it??
-(use-package dumb-jump
-  :hook (xref-backend-functions . dumb-jump-xref-activate))
 
 (use-package copilot
   :straight (:host github :repo "copilot-emacs/copilot.el" :files ("dist" "*.el"))

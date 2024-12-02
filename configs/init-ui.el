@@ -75,6 +75,11 @@
 				 (window-height . 0.5)
 				 (reusable-frames . nil)
 				 (window . selected-window))
+				("\\*mgli-milton-output\\*"
+				 (display-buffer-below-selected)
+				 (window-height . 0.5)
+				 (reusable-frames . nil)
+				 (window . selected-window))
 				)
 			)
 

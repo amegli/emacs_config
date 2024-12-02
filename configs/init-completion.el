@@ -171,5 +171,34 @@
   (setq completion-cycle-threshold 3)
   (setq tab-always-indent 'complete))
 
+(defun mgli-consult-eglot-symbols ()
+  "Interactively select a symbol from the current workspace."
+  (interactive)
+  ;; Set `default-directory' here so we can show file names
+  ;; relative to the project root.
+  (let* ((server (eglot--current-server-or-lose))
+         (default-directory (or (project-root (eglot--project server))
+                                default-directory)))
+    (if (eglot--server-capable :workspaceSymbolProvider)
+        (progn
+          (consult--read
+           (thread-first
+             (consult--async-sink)
+             (consult--async-refresh-immediate)
+             (consult--async-map #'consult-eglot--transformer)
+             (consult-eglot--make-async-source server)
+             (consult--async-throttle)
+             (consult--async-split))
+           :require-match t
+           :prompt "LSP Symbols: "
+           :initial (consult--async-split-initial nil)
+           :history '(:input consult-eglot--history)
+           :category 'consult-lsp-symbols
+           :lookup #'consult--lookup-candidate
+           :group (consult--type-group consult-eglot-narrow)
+           :narrow (consult--type-narrow consult-eglot-narrow)
+           :state (consult-eglot--state))
+          (run-hooks 'consult-after-jump-hook))
+      (user-error "Server doesn't support symbol search"))))
 
 (provide 'init-completion)
