@@ -16,7 +16,7 @@
   :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package doom-themes
-  :init (load-theme 'doom-gruvbox-light t))
+  :init (load-theme 'doom-zenburn t))
 
 (use-package doom-modeline
   :ensure t
@@ -71,6 +71,11 @@
 				 (reusable-frames . nil)
 				 (window . selected-window))
 				("\\*jest-test-compilation\\*"
+				 (display-buffer-below-selected)
+				 (window-height . 0.5)
+				 (reusable-frames . nil)
+				 (window . selected-window))
+				("\\*mgli-milton-output\\*"
 				 (display-buffer-below-selected)
 				 (window-height . 0.5)
 				 (reusable-frames . nil)

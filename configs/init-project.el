@@ -7,17 +7,23 @@
     (setq projectile-project-search-path '("~/Development")))
   (setq projectile-switch-project-action #'projectile-dired))
 
+(setq dired-dwim-target t)
+
 (use-package perspective
   :ensure t
+  :straight t
   :custom
   (persp-mode-prefix-key (kbd "C-c M-p")) 
   :init
   (persp-mode))
 
 (use-package dired-single)
+
 (use-package all-the-icons-dired
   :hook (dired-mode . all-the-icons-dired-mode))
 
 (use-package rg)
+
+(setq dired-auto-revert-buffer t)
 
 (provide 'init-project)
