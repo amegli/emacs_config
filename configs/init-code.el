@@ -41,6 +41,14 @@
 
 (use-package copilot
   :straight (:host github :repo "copilot-emacs/copilot.el" :files ("dist" "*.el"))
-  :hook (prog-mode-hook . copilot-mode))
+  :config
+  (setq copilot-idle-delay 60)
+  (global-set-key (kbd "C-'") 'copilot-complete)
+  :hook (prog-mode-hook . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . 'copilot-accept-completion)
+              ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word)))
 
 (provide 'init-code)
