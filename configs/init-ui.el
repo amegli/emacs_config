@@ -16,7 +16,7 @@
   :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package doom-themes
-  :init (load-theme 'doom-gruvbox-light t))
+  :init (load-theme 'doom-lantern t))
 
 (use-package doom-modeline
   :ensure t
@@ -26,6 +26,8 @@
 	:init (default-text-scale-mode))
 
 (use-package treemacs)
+
+(use-package avy)
 
 (global-display-line-numbers-mode 1)
 

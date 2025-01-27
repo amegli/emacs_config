@@ -51,4 +51,11 @@
               ("C-TAB" . 'copilot-accept-completion-by-word)
               ("C-<tab>" . 'copilot-accept-completion-by-word)))
 
+(use-package repl-driven-development
+  :ensure t
+  :config
+  (repl-driven-development [C-x C-j] javascript)
+  (repl-driven-development [C-x C-p] python)
+  (repl-driven-development [C-x C-t] terminal))
+
 (provide 'init-code)
