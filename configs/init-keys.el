@@ -47,6 +47,12 @@
 	(mgli/leader-def
 		:states '(normal motion emacs)
 		:keymaps 'override
+		"a" (cons "avy" (make-sparse-keymap))
+		"ac" 'avy-goto-char
+		"al" 'avy-goto-line
+		"as" 'avy-goto-word-1
+		"aw" 'avy-goto-word-0
+
 		"m" 'mgli-milton
 		
 		"o" (cons "org" (make-sparse-keymap))
