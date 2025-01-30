@@ -7,4 +7,6 @@
 
 (use-package jest)
 
+(add-to-list 'auto-mode-alist '("\\.toast\\'" . json-mode))
+
 (provide 'init-javascript)

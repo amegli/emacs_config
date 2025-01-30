@@ -58,4 +58,8 @@
   (repl-driven-development [C-x C-p] python)
   (repl-driven-development [C-x C-t] terminal))
 
+(use-package wgrep
+  :config
+  (setq wgrep-auto-save-buffer t))
+
 (provide 'init-code)
