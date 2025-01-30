@@ -83,24 +83,22 @@
 		"gl" 'magit-log-current
 
 		"t" (cons "terminal" (make-sparse-keymap))
-		"tb" 'mgli/bottom-eshell
 		"te" 'eshell
 		"tv" 'vterm
 		"ts" 'scratch-buffer
-
-		"h" (cons "help" (make-sparse-keymap))
-		"hh" 'help
-		"ha" 'apropos-command
-		"hb" 'describe-bindings
-		"hk" 'describe-key
-		"hf" 'describe-function
+		"tb" (cons "bottom terms" (make-sparse-keymap))
+		"tbe" (lambda () (interactive) (mgli/bottom-eshell #'eshell))
+		"tbv" (lambda () (interactive) (mgli/bottom-eshell #'vterm))
+		"tbs" (lambda () (interactive) (mgli/bottom-eshell #'scratch-buffer))
 
 		"b" (cons "buffer" (make-sparse-keymap))
+		"be" 'eval-buffer
 		"bl" 'consult-buffer
 		"bp" 'previous-buffer
 		"bn" 'next-buffer
 		"bk" 'kill-buffer
 		"br" 'consult-recent-file
+		"bd" 'diff-buffers
 
 		"e" (cons "errors" (make-sparse-keymap))
 		"en" 'flycheck-next-error
@@ -127,5 +125,3 @@
 	)
 
 (provide 'init-keys)
-
-(buffer-name)
