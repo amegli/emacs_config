@@ -7,7 +7,7 @@
         (message "Copied file name '%s' to the clipboard." file-name))
     (message "Current buffer is not associated with a file.")))
 
-(defvar milton-config-path "/Users/andrewmegli/Development/milton/"
+(defvar milton-config-path "/Users/andrewmegli/Development/test/milton/config/"
   "Path to the milton configuration file.")
 
 (defun mgli-milton (action environment)
@@ -15,13 +15,14 @@
 	(interactive
 	 (list
 		(read-string "Action (upload, info, diff...) [default upload]: " nil nil "upload")
-		(read-string "Environment (SB5, SB2, SB1, PROD) [default SB5]: " nil nil "SB5")))
-  (let ((output (shell-command-to-string
-                 (format "milton --%s --path %s --config %s"
-                         action (shell-quote-argument buffer-file-name)
-												 (concat (file-name-as-directory milton-config-path)
-																 environment ".config.json"
-																 )))))
+		(read-string "Environment (dev, test, stage, prod) [default dev]: " nil nil "dev")))
+  (let* ((path-arg (unless (string-equal action "command-file") " --path"))
+				 (cd-command (if path-arg nil "cd .. && "))
+				 (output (shell-command-to-string
+									(format (concat cd-command "milton --%s" path-arg " %s --config %s")
+													action (shell-quote-argument buffer-file-name)
+													(concat (file-name-as-directory milton-config-path) "milton." environment ".config")
+													))))
 		(with-help-window "*mgli-milton-output*"
 			(princ output))))
 
@@ -53,7 +54,8 @@
 		"as" 'avy-goto-word-1
 		"aw" 'avy-goto-word-0
 
-		"m" 'mgli-milton
+		"m" (cons "milton" (make-sparse-keymap))
+		"mm" 'mgli-milton
 		
 		"o" (cons "org" (make-sparse-keymap))
 		"oc" 'org-toggle-checkbox
