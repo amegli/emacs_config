@@ -26,6 +26,13 @@
 		(with-help-window "*mgli-milton-output*"
 			(princ output))))
 
+(defun mgli-milton-command-file (environment)
+	"Run milton against the current command file buffer."
+	(interactive
+	 (list
+		(read-string "Environment (dev, test, stage, prod) [default dev]: " nil nil "dev")))
+	(mgli-milton "command-file" environment))
+
 (defun mgli-consult-ripgrep ()
 	(interactive)
 	(let ((current_symbol (symbol-at-point)))
@@ -56,6 +63,7 @@
 
 		"m" (cons "milton" (make-sparse-keymap))
 		"mm" 'mgli-milton
+		"mc" 'mgli-milton-command-file
 		
 		"o" (cons "org" (make-sparse-keymap))
 		"oc" 'org-toggle-checkbox
