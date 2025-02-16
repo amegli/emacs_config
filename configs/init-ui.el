@@ -1,8 +1,10 @@
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-(use-package all-the-icons
-  :if (display-graphic-p))
+(use-package nerd-icons)
+(use-package treemacs-nerd-icons
+  :after treemacs
+  :config (treemacs-load-theme "nerd-icons"))
 
 (setq inhibit-startup-message t)
 (scroll-bar-mode -1)

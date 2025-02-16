@@ -12,7 +12,7 @@
 										 "    \\__\\/ \\__\\/ \\_____\\/   \\_____\\/\\________\\/ ")
 									 "\n"))
   (setq dashboard-startup-banner nil)
-  (setq dashboard-icon-type 'all-the-icons)
+  (setq dashboard-icon-type 'nerd-icons)
   (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
   (setq dashboard-set-init-info t)
