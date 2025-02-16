@@ -1,13 +1,8 @@
-(use-package eglot
-  :hook (prog-mode . eglot-ensure))
-
-(use-package consult-eglot)
-
 (define-key minibuffer-local-map (kbd "C-c C-n") #'evil-normal-state)
 
 ;; Attempt to guess indent style of buffer
-(use-package dtrt-indent
-  :init (dtrt-indent-global-mode t))
+;; (use-package dtrt-indent
+;;   :init (dtrt-indent-global-mode t))
 
 ;; Async formatting after save
 (use-package apheleia
@@ -26,14 +21,22 @@
   (setq flycheck-display-errors-delay 0.01)
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
-(use-package flycheck-eglot
-  :after (flycheck eglot)
-  :config
-  (global-flycheck-eglot-mode 1))
-
-(setq eldoc-echo-area-prefer-doc-buffer t)
-(setq eldoc-idle-delay .1)
-(setq eldoc-echo-area-use-multiline-p 4)
+(use-package lsp-mode
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+	:config
+	(setq lsp-headerline-breadcrumb-enable nil)
+  :hook (
+         (javascript-mode . lsp)
+         (typescript-mode . lsp)
+         (js-mode . lsp)
+         (typescript-tsx-mode . lsp)
+         (haskell-mode . lsp)
+         (elixir-mode . lsp)
+         (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+(use-package lsp-ui)
 
 (use-package racket-mode)
 (use-package yaml-mode)
