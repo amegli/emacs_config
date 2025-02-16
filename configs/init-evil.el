@@ -22,6 +22,8 @@
 (evil-snipe-override-mode 1)
 (add-hook 'magit-mode-hook 'turn-off-evil-snipe-override-mode)
 
+(use-package evil-vimish-fold)
+
 ;; Make C-. available for embark-act instead
 (define-key evil-normal-state-map (kbd "C-.") nil)
 

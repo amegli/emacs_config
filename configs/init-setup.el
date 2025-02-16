@@ -22,4 +22,6 @@
 
 (add-hook 'text-mode-hook 'visual-line-mode)
 
+(use-package vundo)
+
 (provide 'init-setup)

@@ -65,4 +65,7 @@
   :config
   (setq wgrep-auto-save-buffer t))
 
+(use-package embrace)
+(add-hook 'org-mode-hook #'embrace-org-mode-hook)
+
 (provide 'init-code)

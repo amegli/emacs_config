@@ -54,4 +54,7 @@
 (setq org-use-sub-superscripts nil)
 (setq org-export-with-sub-superscripts nil)
 
+;; https://fuco1.github.io/2018-12-23-Multiline-fontification-with-org-emphasis-alist.html
+(setcar (nthcdr 4 org-emphasis-regexp-components) 10)
+
 (provide 'init-org)

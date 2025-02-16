@@ -98,12 +98,21 @@ similar function will work."
 		"m" (cons "milton" (make-sparse-keymap))
 		"mm" 'mgli-milton
 		"mc" 'mgli-milton-command-file
+
+		"s" 'embrace-commander
 		
 		"o" (cons "org" (make-sparse-keymap))
 		"oc" 'org-toggle-checkbox
 		"oo" 'org-capture
 		"oa" 'org-agenda
 		"op" 'evil-org-open-below
+		"of" (cons "format" (make-sparse-keymap))
+		"ofb" (lambda () (interactive) (org-emphasize ?*))
+		"ofi" (lambda () (interactive) (org-emphasize ?/))
+		"ofu" (lambda () (interactive) (org-emphasize ?_))
+		"ofv" (lambda () (interactive) (org-emphasize ?=))
+		"ofc" (lambda () (interactive) (org-emphasize ? ))
+		"ofs" (lambda () (interactive) (org-emphasize ?+))
 
 		"f" (cons "files" (make-sparse-keymap))
 		"ff" 'find-file
@@ -123,6 +132,7 @@ similar function will work."
 		"g" (cons "magit" (make-sparse-keymap))
 		"gg" 'magit
 		"gb" 'magit-blame-addition
+		"gv" 'vc-annotate
 		"gp" 'magit-pull
 		"gc" 'magit-branch-checkout
 		"gl" (cons "log" (make-sparse-keymap))
@@ -172,6 +182,8 @@ similar function will work."
 
 		"u" (cons "ui" (make-sparse-keymap))
 		"ut" 'consult-theme
+
+		"v" 'vundo
 		)
 	)
 
