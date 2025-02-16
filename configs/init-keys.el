@@ -38,6 +38,40 @@
 	(let ((current_symbol (symbol-at-point)))
 		(consult-ripgrep nil (when current_symbol (symbol-name current_symbol)))))
 
+(defun mgli-switch-to-recent-file (switching-fn)
+	"Filter buffer list to file-based buffers and switch to one.
+The provided SWITCHING-FN is used to select a buffer from the results.
+This is meant for use with 'previous-buffer' and 'next-buffer' but any
+similar function will work."
+	(interactive)
+	(let ((starting-buffer (current-buffer))
+				(valid-buffers (match-buffers
+												(lambda (buffer)
+												  (and
+													 (not (eq buffer (current-buffer)))
+													 (buffer-file-name buffer))))))
+		(if valid-buffers
+				(progn
+					(dotimes (_ (length (buffer-list)))
+						(unless (not (member (current-buffer) valid-buffers))
+							(cl-return))
+						(funcall switching-fn))
+					(if (not (member (current-buffer) valid-buffers))
+							(progn
+								(switch-to-buffer starting-buffer)
+								(message "Exhausted all switch attempts; returning to original buffer."))))
+			(message "No valid buffers to switch to."))))
+
+(defun mgli-previous-file ()
+	"Switch to the previous file-based buffer."
+	(interactive)
+	(mgli-switch-to-recent-file #'previous-buffer))
+
+(defun mgli-next-file ()
+	"Switch to the next file-based buffer."
+	(interactive)
+	(mgli-switch-to-recent-file #'next-buffer))
+
 (use-package general
 	:after evil
 	:config
@@ -89,8 +123,14 @@
 		"g" (cons "magit" (make-sparse-keymap))
 		"gg" 'magit
 		"gb" 'magit-blame-addition
-		"gfl" 'magit-log-buffer-file
-		"gl" 'magit-log-current
+		"gp" 'magit-pull
+		"gc" 'magit-branch-checkout
+		"gl" (cons "log" (make-sparse-keymap))
+		"glb" 'magit-log-buffer-file
+		"gla" 'magit-log-all-branches
+		"gd" (cons "diff" (make-sparse-keymap))
+		"gdr" 'magit-diff-range
+		"gdf" 'magit-diff-paths
 
 		"t" (cons "terminal" (make-sparse-keymap))
 		"te" 'eshell
@@ -104,8 +144,8 @@
 		"b" (cons "buffer" (make-sparse-keymap))
 		"be" 'eval-buffer
 		"bl" 'consult-buffer
-		"bp" 'previous-buffer
-		"bn" 'next-buffer
+		"bp" 'mgli-previous-file
+		"bn" 'mgli-next-file
 		"bk" 'kill-buffer
 		"br" 'consult-recent-file
 		"bd" 'diff-buffers
@@ -122,7 +162,8 @@
 		"jj" 'jest-popup
 
 		"c" (cons "code" (make-sparse-keymap))
-		"cs" 'consult-eglot-symbols
+		"cs" 'lsp-treemacs-symbols
+		"ci" 'consult-imenu
 		"cd" 'eldoc-doc-buffer
 		"cc" 'comment-dwim
 		"cr" 'xref-find-references
