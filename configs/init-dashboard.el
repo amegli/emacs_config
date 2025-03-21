@@ -11,7 +11,8 @@
 										 "   \\. \\  \\  \\ \\\\:\\_\\ \\ \\  \\:\\/___/\\/__\\::\\__/\\ "
 										 "    \\__\\/ \\__\\/ \\_____\\/   \\_____\\/\\________\\/ ")
 									 "\n"))
-  (setq dashboard-startup-banner nil)
+  (setq dashboard-startup-banner 'official)
+	(setq dashboard-display-icons-p t)
   (setq dashboard-icon-type 'nerd-icons)
   (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)

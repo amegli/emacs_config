@@ -1,8 +1,8 @@
 (define-key minibuffer-local-map (kbd "C-c C-n") #'evil-normal-state)
 
-;; Attempt to guess indent style of buffer
-;; (use-package dtrt-indent
-;;   :init (dtrt-indent-global-mode t))
+;;Attempt to guess indent style of buffer
+(use-package dtrt-indent
+  :init (dtrt-indent-global-mode t))
 
 ;; Async formatting after save
 (use-package apheleia
@@ -17,7 +17,7 @@
 
 (use-package flycheck
   :config
-  (setq flycheck-highlighting-mode 'lines)
+  (setq flycheck-highlighting-mode nil)
   (setq flycheck-display-errors-delay 0.01)
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
@@ -33,10 +33,16 @@
          (typescript-tsx-mode . lsp)
          (haskell-mode . lsp)
          (elixir-mode . lsp)
+         (php-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
-(use-package lsp-ui)
+(use-package lsp-ui
+  :config
+  (setq lsp-ui-peek-enable t)
+  (setq lsp-ui-peek-show-directory t)
+  (setq lsp-ui-doc-enable t)
+  (setq lsp-ui-doc-position 'at-point))
 
 (use-package racket-mode)
 (use-package yaml-mode)
@@ -54,18 +60,14 @@
               ("C-TAB" . 'copilot-accept-completion-by-word)
               ("C-<tab>" . 'copilot-accept-completion-by-word)))
 
-(use-package repl-driven-development
-  :ensure t
-  :config
-  (repl-driven-development [C-x C-j] javascript)
-  (repl-driven-development [C-x C-p] python)
-  (repl-driven-development [C-x C-t] terminal))
-
 (use-package wgrep
   :config
   (setq wgrep-auto-save-buffer t))
 
 (use-package embrace)
 (add-hook 'org-mode-hook #'embrace-org-mode-hook)
+
+(use-package dumb-jump)
+(add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 
 (provide 'init-code)
