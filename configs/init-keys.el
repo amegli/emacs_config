@@ -1,77 +1,3 @@
-
-(defun mgli-copy-current-file-name ()
-  (interactive)
-  (if-let ((file-name (buffer-file-name)))
-      (progn
-        (kill-new file-name)
-        (message "Copied file name '%s' to the clipboard." file-name))
-    (message "Current buffer is not associated with a file.")))
-
-(defvar milton-config-path "/Users/andrewmegli/Development/test/milton/config/"
-  "Path to the milton configuration file.")
-
-(defun mgli-milton (action environment)
-	"Make milton go"
-	(interactive
-	 (list
-		(read-string "Action (upload, info, diff...) [default upload]: " nil nil "upload")
-		(read-string "Environment (dev, test, stage, prod) [default dev]: " nil nil "dev")))
-  (let* ((path-arg (unless (string-equal action "command-file") " --path"))
-				 (cd-command (if path-arg nil "cd .. && "))
-				 (output (shell-command-to-string
-									(format (concat cd-command "milton --%s" path-arg " %s --config %s")
-													action (shell-quote-argument buffer-file-name)
-													(concat (file-name-as-directory milton-config-path) "milton." environment ".config")
-													))))
-		(with-help-window "*mgli-milton-output*"
-			(princ output))))
-
-(defun mgli-milton-command-file (environment)
-	"Run milton against the current command file buffer."
-	(interactive
-	 (list
-		(read-string "Environment (dev, test, stage, prod) [default dev]: " nil nil "dev")))
-	(mgli-milton "command-file" environment))
-
-(defun mgli-consult-ripgrep ()
-	(interactive)
-	(let ((current_symbol (symbol-at-point)))
-		(consult-ripgrep nil (when current_symbol (symbol-name current_symbol)))))
-
-(defun mgli-switch-to-recent-file (switching-fn)
-	"Filter buffer list to file-based buffers and switch to one.
-The provided SWITCHING-FN is used to select a buffer from the results.
-This is meant for use with 'previous-buffer' and 'next-buffer' but any
-similar function will work."
-	(interactive)
-	(let ((starting-buffer (current-buffer))
-				(valid-buffers (match-buffers
-												(lambda (buffer)
-												  (and
-													 (not (eq buffer (current-buffer)))
-													 (buffer-file-name buffer))))))
-		(if valid-buffers
-				(progn
-					(dotimes (_ (length (buffer-list)))
-						(unless (not (member (current-buffer) valid-buffers))
-							(cl-return))
-						(funcall switching-fn))
-					(if (not (member (current-buffer) valid-buffers))
-							(progn
-								(switch-to-buffer starting-buffer)
-								(message "Exhausted all switch attempts; returning to original buffer."))))
-			(message "No valid buffers to switch to."))))
-
-(defun mgli-previous-file ()
-	"Switch to the previous file-based buffer."
-	(interactive)
-	(mgli-switch-to-recent-file #'previous-buffer))
-
-(defun mgli-next-file ()
-	"Switch to the next file-based buffer."
-	(interactive)
-	(mgli-switch-to-recent-file #'next-buffer))
-
 (use-package general
 	:after evil
 	:config
@@ -138,6 +64,7 @@ similar function will work."
 		"gl" (cons "log" (make-sparse-keymap))
 		"glb" 'magit-log-buffer-file
 		"gla" 'magit-log-all-branches
+		"glc" 'magit-log-current
 		"gd" (cons "diff" (make-sparse-keymap))
 		"gdr" 'magit-diff-range
 		"gdf" 'magit-diff-paths
@@ -159,6 +86,12 @@ similar function will work."
 		"bk" 'kill-buffer
 		"br" 'consult-recent-file
 		"bd" 'diff-buffers
+
+		"r" (cons "bookmark" (make-sparse-keymap))
+		"rm" 'bookmark-set
+		"rj" 'bookmark-jump
+		"rl" 'list-bookmarks
+		"rd" 'bookmark-delete
 
 		"e" (cons "errors" (make-sparse-keymap))
 		"en" 'flycheck-next-error
@@ -182,6 +115,10 @@ similar function will work."
 
 		"u" (cons "ui" (make-sparse-keymap))
 		"ut" 'consult-theme
+		"uf" (cons "text" (make-sparse-keymap))
+		"uf+" 'text-scale-increase
+		"uf-" 'text-scale-decrease
+		"ufr" 'default-text-scale-reset
 
 		"v" 'vundo
 		)

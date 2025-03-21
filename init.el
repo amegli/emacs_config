@@ -34,8 +34,12 @@
   (load bootstrap-file nil 'nomessage))
 
 (add-to-list 'load-path (expand-file-name "~/.config/emacs/configs"))
+(add-to-list 'load-path (expand-file-name "~/.config/emacs/configs/custom"))
 
 (require 'init-setup)
+(require 'milton)
+(require 'recent-file)
+(require 'mgli-misc)
 (require 'init-keys)
 (require 'init-ui)
 (require 'init-evil)
@@ -48,5 +52,6 @@
 (require 'init-elixir)
 (require 'init-javascript)
 (require 'init-php)
+(require 'init-ai)
 (require 'init-terminal)
 (require 'init-dashboard)

@@ -1,16 +1,3 @@
-(defun mgli/bottom-eshell (terminal-func)
-  (interactive)
-  (split-window-below -30)
-  (other-window 1)
-  (set-window-parameter (selected-window) 'is-mgli-term t)
-  (funcall terminal-func))
-
-(defun mgli/close-bottom-eshell (orig-fun &rest args)
-  (let ((is-mgli-term (window-parameter (selected-window) 'is-mgli-term)))
-    (apply orig-fun args)
-    (when is-mgli-term
-      (delete-window))))
-
 (advice-add 'eshell-life-is-too-much :around #'mgli/close-bottom-eshell)
 
 (use-package vterm
