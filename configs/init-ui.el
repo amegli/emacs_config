@@ -1,4 +1,3 @@
-
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (use-package nerd-icons)
@@ -17,6 +16,7 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
+(use-package ef-themes)
 (use-package doom-themes
   :init (load-theme 'doom-lantern t))
 
@@ -51,6 +51,12 @@
 (use-package spacious-padding
 	:init
 	(spacious-padding-mode 1))
+
+(use-package pulsar)
+(require 'pulsar)
+(pulsar-global-mode 1)
+(add-hook 'next-error-hook #'pulsar-pulse-line)
+(add-hook 'minibuffer-setup-hook #'pulsar-pulse-line)
 
 (setq display-buffer-alist
 			'(
