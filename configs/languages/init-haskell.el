@@ -5,10 +5,6 @@
          (haskell-mode . turn-on-haskell-indentation)
          (haskell-mode . haskell-auto-insert-module-template)))
 
-(use-package flycheck-haskell
-	:hook (haskell-mode-hook . flymake-haskell-setup))
-
-
 (use-package reformatter
   :ensure t
   :after haskell-mode

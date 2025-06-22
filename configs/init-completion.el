@@ -113,8 +113,7 @@
    consult--source-recent-file consult--source-project-recent-file
    :preview-key '(:debounce 0.4 any))
 
-  (setq consult-narrow-key "<")
-  )
+  (setq consult-narrow-key "<"))
 
 (use-package marginalia
   :ensure t
@@ -139,6 +138,16 @@
   :ensure t
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
+
+(use-package wgrep
+  :config
+  (setq wgrep-auto-save-buffer t))
+
+(use-package expand-region
+  :ensure t)
+
+(use-package embrace)
+(add-hook 'org-mode-hook #'embrace-org-mode-hook)
 
 (use-package corfu
   :init

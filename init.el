@@ -35,11 +35,18 @@
 
 (add-to-list 'load-path (expand-file-name "~/.config/emacs/configs"))
 (add-to-list 'load-path (expand-file-name "~/.config/emacs/configs/custom"))
+(add-to-list 'load-path (expand-file-name "~/.config/emacs/configs/languages"))
 
 (require 'init-setup)
 (require 'milton)
 (require 'recent-file)
 (require 'mgli-misc)
+
+(require 'init-flycheck)
+;; Pick one
+(require 'init-eglot)
+;; (require 'init-lsp)
+
 (require 'init-keys)
 (require 'init-ui)
 (require 'init-evil)
@@ -47,11 +54,12 @@
 (require 'init-project)
 (require 'init-git)
 (require 'init-org)
-(require 'init-code)
+
 (require 'init-haskell)
 (require 'init-elixir)
 (require 'init-javascript)
-(require 'init-php)
+(require 'init-lang-misc)
+
 (require 'init-ai)
 (require 'init-terminal)
 (require 'init-dashboard)

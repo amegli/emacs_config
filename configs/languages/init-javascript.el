@@ -1,5 +1,7 @@
 (use-package json-mode)
 
+(use-package js2-mode)
+
 (use-package web-mode
   :config
   (setq web-mode-content-types-alist
@@ -9,6 +11,10 @@
   :ensure t
   :commands jest-test-mode
   :hook (typescript-mode js-mode typescript-tsx-mode))
+
+(add-hook 'js-mode-hook
+					(lambda ()
+						(setq js-indent-level 2)))
 
 (use-package jest)
 

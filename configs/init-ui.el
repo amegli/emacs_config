@@ -25,7 +25,7 @@
   :init (doom-modeline-mode 1))
 
 (use-package default-text-scale
-	:init (default-text-scale-mode))
+  :init (default-text-scale-mode))
 
 (use-package treemacs)
 
@@ -38,19 +38,24 @@
   (message "Disabling line numbers for %s" major-mode))
 
 (dolist (mode `(org-mode-hook
-								term-mode-hook
-								shell-mode-hook
-								treemacs-mode-hook
-								dashboard-mode-hook
-								eshell-mode-hook))
+		term-mode-hook
+		shell-mode-hook
+		treemacs-mode-hook
+		dashboard-mode-hook
+		eshell-mode-hook))
   (add-hook mode 'disable-line-numbers-mode-hook))
 
 (fringe-mode 0)
 (column-number-mode)
 
 (use-package spacious-padding
-	:init
-	(spacious-padding-mode 1))
+  :init
+  (spacious-padding-mode 1))
+
+
+;;Attempt to guess indent style of buffer
+;; (use-package dtrt-indent
+;;   :init (dtrt-indent-global-mode t))
 
 (use-package pulsar)
 (require 'pulsar)
@@ -59,39 +64,39 @@
 (add-hook 'minibuffer-setup-hook #'pulsar-pulse-line)
 
 (setq display-buffer-alist
-			'(
-				("\\*Help\\*"
-				 (display-buffer-below-selected)
-				 (window-height . 0.5)
-				 (reusable-frames . nil)
-				 (window . selected-window))
-				("\\*rg\\*"
-				 (display-buffer-below-selected)
-				 (window-height . 0.5)
-				 (reusable-frames . nil)
-				 (window . selected-window))
-				("\\*Flycheck errors\\*"
-				 (display-buffer-below-selected)
-				 (window-height . 0.5)
-				 (reusable-frames . nil)
-				 (window . selected-window))
-				("\\*jest\\*"
-				 (display-buffer-below-selected)
-				 (window-height . 0.5)
-				 (reusable-frames . nil)
-				 (window . selected-window))
-				("\\*jest-test-compilation\\*"
-				 (display-buffer-below-selected)
-				 (window-height . 0.5)
-				 (reusable-frames . nil)
-				 (window . selected-window))
-				("\\*mgli-milton-output\\*"
-				 (display-buffer-below-selected)
-				 (window-height . 0.5)
-				 (reusable-frames . nil)
-				 (window . selected-window))
-				)
-			)
+      '(
+	("\\*Help\\*"
+	 (display-buffer-below-selected)
+	 (window-height . 0.5)
+	 (reusable-frames . nil)
+	 (window . selected-window))
+	("\\*rg\\*"
+	 (display-buffer-below-selected)
+	 (window-height . 0.5)
+	 (reusable-frames . nil)
+	 (window . selected-window))
+	("\\*Flycheck errors\\*"
+	 (display-buffer-below-selected)
+	 (window-height . 0.5)
+	 (reusable-frames . nil)
+	 (window . selected-window))
+	("\\*jest\\*"
+	 (display-buffer-below-selected)
+	 (window-height . 0.5)
+	 (reusable-frames . nil)
+	 (window . selected-window))
+	("\\*jest-test-compilation\\*"
+	 (display-buffer-below-selected)
+	 (window-height . 0.5)
+	 (reusable-frames . nil)
+	 (window . selected-window))
+	("\\*mgli-milton-output\\*"
+	 (display-buffer-below-selected)
+	 (window-height . 0.5)
+	 (reusable-frames . nil)
+	 (window . selected-window))
+	)
+      )
 
 (setq help-window-select t)
 

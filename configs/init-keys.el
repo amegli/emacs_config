@@ -1,10 +1,11 @@
+(define-key minibuffer-local-map (kbd "C-c C-n") #'evil-normal-state)
+
 (use-package general
 	:after evil
 	:config
 	(general-evil-setup t)
 	(general-define-key
 	 :states '(normal visual motion emacs)
-	 "K" 'lsp-ui-doc-toggle
 	 "gt" 'tab-next
 	 "gT" 'tab-previous
 	 )
@@ -123,5 +124,11 @@
 		"v" 'vundo
 		)
 	)
+
+(with-eval-after-load 'eglot
+  (general-define-key
+   :states '(normal visual motion emacs)
+   :keymaps 'eglot-mode-map
+   "K" 'eldoc-box-help-at-point))
 
 (provide 'init-keys)
