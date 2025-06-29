@@ -38,11 +38,11 @@
   (message "Disabling line numbers for %s" major-mode))
 
 (dolist (mode `(org-mode-hook
-		term-mode-hook
-		shell-mode-hook
-		treemacs-mode-hook
-		dashboard-mode-hook
-		eshell-mode-hook))
+								term-mode-hook
+								shell-mode-hook
+								treemacs-mode-hook
+								dashboard-mode-hook
+								eshell-mode-hook))
   (add-hook mode 'disable-line-numbers-mode-hook))
 
 (fringe-mode 0)
@@ -52,11 +52,6 @@
   :init
   (spacious-padding-mode 1))
 
-
-;;Attempt to guess indent style of buffer
-;; (use-package dtrt-indent
-;;   :init (dtrt-indent-global-mode t))
-
 (use-package pulsar)
 (require 'pulsar)
 (pulsar-global-mode 1)
@@ -65,39 +60,46 @@
 
 (setq display-buffer-alist
       '(
-	("\\*Help\\*"
-	 (display-buffer-below-selected)
-	 (window-height . 0.5)
-	 (reusable-frames . nil)
-	 (window . selected-window))
-	("\\*rg\\*"
-	 (display-buffer-below-selected)
-	 (window-height . 0.5)
-	 (reusable-frames . nil)
-	 (window . selected-window))
-	("\\*Flycheck errors\\*"
-	 (display-buffer-below-selected)
-	 (window-height . 0.5)
-	 (reusable-frames . nil)
-	 (window . selected-window))
-	("\\*jest\\*"
-	 (display-buffer-below-selected)
-	 (window-height . 0.5)
-	 (reusable-frames . nil)
-	 (window . selected-window))
-	("\\*jest-test-compilation\\*"
-	 (display-buffer-below-selected)
-	 (window-height . 0.5)
-	 (reusable-frames . nil)
-	 (window . selected-window))
-	("\\*mgli-milton-output\\*"
-	 (display-buffer-below-selected)
-	 (window-height . 0.5)
-	 (reusable-frames . nil)
-	 (window . selected-window))
-	)
+				("\\*Help\\*"
+				 (display-buffer-below-selected)
+				 (window-height . 0.5)
+				 (reusable-frames . nil)
+				 (window . selected-window))
+				("\\*rg\\*"
+				 (display-buffer-below-selected)
+				 (window-height . 0.5)
+				 (reusable-frames . nil)
+				 (window . selected-window))
+				("\\*Flycheck errors\\*"
+				 (display-buffer-below-selected)
+				 (window-height . 0.5)
+				 (reusable-frames . nil)
+				 (window . selected-window))
+				("\\*jest\\*"
+				 (display-buffer-below-selected)
+				 (window-height . 0.5)
+				 (reusable-frames . nil)
+				 (window . selected-window))
+				("\\*jest-test-compilation\\*"
+				 (display-buffer-below-selected)
+				 (window-height . 0.5)
+				 (reusable-frames . nil)
+				 (window . selected-window))
+				("\\*mgli-milton-output\\*"
+				 (display-buffer-below-selected)
+				 (window-height . 0.5)
+				 (reusable-frames . nil)
+				 (window . selected-window))
+				)
       )
 
 (setq help-window-select t)
+
+(use-package mini-frame)
+(custom-set-variables
+ '(mini-frame-show-parameters
+   '((top . 0.3)
+     (width . 0.7)
+     (left . 0.5))))
 
 (provide 'init-ui)

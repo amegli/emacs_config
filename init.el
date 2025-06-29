@@ -41,6 +41,7 @@
 (require 'milton)
 (require 'recent-file)
 (require 'mgli-misc)
+(require 'mark-ring)
 
 (require 'init-flycheck)
 ;; Pick one

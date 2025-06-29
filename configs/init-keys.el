@@ -93,6 +93,8 @@
 		"rj" 'bookmark-jump
 		"rl" 'list-bookmarks
 		"rd" 'bookmark-delete
+		"rf" 'mgli-mark-ring-forward
+		"rb" 'mgli-mark-ring-back
 
 		"e" (cons "errors" (make-sparse-keymap))
 		"en" 'flycheck-next-error
