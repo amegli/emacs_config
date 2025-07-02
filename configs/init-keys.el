@@ -127,10 +127,11 @@
 		)
 	)
 
-(with-eval-after-load 'eglot
-  (general-define-key
-   :states '(normal visual motion emacs)
-   :keymaps 'eglot-mode-map
-   "K" 'eldoc-box-help-at-point))
+(add-hook 'eglot-managed-mode-hook
+          (lambda ()
+            (general-define-key
+             :states '(normal visual motion emacs)
+             :keymaps 'local
+             "K" #'eldoc-box-help-at-point)))
 
 (provide 'init-keys)
