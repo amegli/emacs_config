@@ -4,6 +4,8 @@
 (add-hook 'haskell-mode-hook 'eglot-ensure)
 (add-hook 'php-mode-hook 'eglot-ensure)
 (add-hook 'racket-mode-hook 'eglot-ensure)
+(add-hook 'tsx-ts-mode-hook 'eglot-ensure)
+(add-hook 'typescript-mode-hook 'eglot-ensure)
 
 (use-package flycheck-eglot
   :after (flycheck eglot)
