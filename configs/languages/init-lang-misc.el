@@ -3,6 +3,7 @@
 (use-package yaml-mode)
 (use-package purescript-mode)
 (use-package brainfuck-mode)
+(use-package markdown-mode)
 
 (setq-default tab-width 2)
 (setq-default evil-shift-width 2)
