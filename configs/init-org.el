@@ -18,6 +18,9 @@
   )
 (add-hook 'org-mode-hook 'org-indent-mode)
 
+(setq org-todo-keywords
+      '((sequence "TODO" "IN-PROGRESS" "REVIEW" "|" "DONE" "CANCELED")))
+
 (use-package evil-org
   :ensure t
   :after org
