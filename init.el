@@ -59,6 +59,7 @@
 (require 'init-haskell)
 (require 'init-elixir)
 (require 'init-javascript)
+(require 'init-clojure)
 (require 'init-lang-misc)
 
 (require 'init-ai)

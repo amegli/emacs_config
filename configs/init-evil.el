@@ -25,6 +25,9 @@
 
 (use-package evil-vimish-fold)
 
+(use-package evil-mc)
+(global-evil-mc-mode 1) 
+
 ;; Make C-. available for embark-act instead
 (define-key evil-normal-state-map (kbd "C-.") nil)
 

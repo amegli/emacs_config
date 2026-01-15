@@ -21,6 +21,9 @@
 
 (use-package rg)
 
+(use-package beads
+  :ensure t)
+
 (setq dired-auto-revert-buffer t)
 (setq dired-kill-when-opening-new-dired-buffer t)
 (setq dired-dwim-target t)
