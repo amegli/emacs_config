@@ -28,6 +28,11 @@
 (use-package evil-mc)
 (global-evil-mc-mode 1) 
 
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1))
+
 ;; Make C-. available for embark-act instead
 (define-key evil-normal-state-map (kbd "C-.") nil)
 

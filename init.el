@@ -65,3 +65,4 @@
 (require 'init-ai)
 (require 'init-terminal)
 (require 'init-dashboard)
+(put 'downcase-region 'disabled nil)
