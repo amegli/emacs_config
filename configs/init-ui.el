@@ -20,6 +20,44 @@
 (use-package doom-themes
   :init (load-theme 'doom-lantern t))
 
+(defvar my/ember-palette
+  '((base0 . "#151412") (base1 . "#1c1b19") (base2 . "#252422")
+    (base3 . "#2e2d2a") (base4 . "#3e3c38") (base5 . "#585550")
+    (base6 . "#706c61") (base7 . "#908a7e") (base8 . "#b8b0a0")
+    (bg . "#1c1b19") (bg-alt . "#222120")
+    (fg . "#d8d0c0") (fg-alt . "#b0a898")
+    (red . "#e08060") (orange . "#c09058") (yellow . "#c8b468")
+    (green . "#8a9868") (blue . "#7890a0") (teal . "#789080")
+    (cyan . "#80a090") (magenta . "#b07878") (violet . "#988090")))
+
+(defun my/ember-fix-face-args (args)
+  "Resolve palette symbols leaked into :box :color by doom-themes macro."
+  (let* ((face (car args))
+         (rest (cdr args))
+         ;; set-face-attribute allows optional FRAME before the plist
+         (has-frame (and rest
+                         (or (null (car rest)) (framep (car rest))
+                             (eq (car rest) t) (eq (car rest) 0))))
+         (frame (and has-frame (car rest)))
+         (plist (if has-frame (cdr rest) rest))
+         (box (plist-get plist :box)))
+    (when (and (listp box) (symbolp (plist-get box :color)))
+      (when-let ((hex (cdr (assq (plist-get box :color) my/ember-palette))))
+        (setq box (plist-put (copy-sequence box) :color hex))
+        (setq plist (plist-put (copy-sequence plist) :box box))))
+    (if has-frame (cons face (cons frame plist)) (cons face plist))))
+
+(advice-add 'set-face-attribute :filter-args #'my/ember-fix-face-args)
+
+(use-package ember-theme
+  :vc (:url "https://github.com/ember-theme/emacs" :rev :newest)
+  :config
+  (add-to-list 'custom-theme-load-path
+               (file-name-directory (locate-library "ember-theme")))
+  (load-theme 'ember t))
+
+(setq debug-on-error t)
+
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1))
