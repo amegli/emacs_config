@@ -10,7 +10,7 @@
 (use-package jest-test-mode
   :ensure t
   :commands jest-test-mode
-  :hook (typescript-mode js-mode typescript-tsx-mode typescript-ts-mode))
+  :hook (typescript-mode js-mode tsx-ts-mode typescript-ts-mode))
 
 (add-hook 'js-mode-hook
 					(lambda ()

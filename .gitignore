@@ -75,3 +75,4 @@ tags
 # End of https://www.toptal.com/developers/gitignore/api/vim,emacs
 
 .DS_Store
+/.agent-shell/

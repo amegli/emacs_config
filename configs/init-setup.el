@@ -20,6 +20,11 @@
 
 (setq ring-bell-function 'ignore)
 
+(let ((rbenv-shims (expand-file-name "~/.rbenv/shims")))
+  (when (file-directory-p rbenv-shims)
+    (add-to-list 'exec-path rbenv-shims)
+    (setenv "PATH" (concat rbenv-shims ":" (getenv "PATH")))))
+
 (add-hook 'text-mode-hook 'visual-line-mode)
 
 (use-package vundo)
