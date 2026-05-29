@@ -115,11 +115,6 @@
 
   (setq consult-narrow-key "<"))
 
-(use-package marginalia
-  :ensure t
-  :config
-  (marginalia-mode))
-
 (use-package embark
   :ensure t
   :bind

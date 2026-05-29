@@ -18,6 +18,7 @@
   (global-flycheck-eglot-mode 1))
 
 (use-package eldoc-box)
+(use-package consult-eglot)
 
 (setq eldoc-echo-area-prefer-doc-buffer t)
 (setq eldoc-idle-delay .1)

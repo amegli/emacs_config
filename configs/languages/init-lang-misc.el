@@ -10,6 +10,11 @@
 (setq-default indent-tabs-mode t)
 (electric-pair-mode 1)
 
+(use-package treesit-auto
+  :config
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))
+
 ;; Async formatting after save
 (use-package apheleia
   :hook (prog-mode . apheleia-mode)

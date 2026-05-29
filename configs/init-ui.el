@@ -17,8 +17,7 @@
   :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package ef-themes)
-(use-package doom-themes
-  :init (load-theme 'doom-lantern t))
+(use-package doom-themes)
 
 (defvar my/ember-palette
   '((base0 . "#151412") (base1 . "#1c1b19") (base2 . "#252422")
@@ -55,8 +54,6 @@
   (add-to-list 'custom-theme-load-path
                (file-name-directory (locate-library "ember-theme")))
   (load-theme 'ember t))
-
-(setq debug-on-error t)
 
 (use-package doom-modeline
   :ensure t

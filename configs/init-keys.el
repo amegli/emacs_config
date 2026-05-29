@@ -108,7 +108,7 @@
 		"jj" 'jest-popup
 
 		"c" (cons "code" (make-sparse-keymap))
-		"cs" 'lsp-treemacs-symbols
+		"cs" 'consult-eglot-symbols
 		"ci" 'consult-imenu
 		"cd" 'eldoc-doc-buffer
 		"cc" 'comment-dwim
