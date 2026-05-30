@@ -12,6 +12,7 @@
 
 (use-package treesit-auto
   :config
+  (setq treesit-auto-install 'prompt)
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 

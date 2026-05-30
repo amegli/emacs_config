@@ -137,4 +137,6 @@
      (width . 0.7)
      (left . 0.5))))
 
+(setq markdown-command "pandoc")
+
 (provide 'init-ui)

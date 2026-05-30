@@ -1,3 +1,5 @@
+(setq native-comp-async-report-warnings-errors 'silent)
+
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
 												 ("org" . "https://orgmode.org/elpa/")
