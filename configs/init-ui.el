@@ -57,7 +57,11 @@
 
 (use-package doom-modeline
   :ensure t
-  :init (doom-modeline-mode 1))
+  :init (doom-modeline-mode 1)
+  :config (setq doom-modeline-minor-modes t))
+
+(use-package minions
+  :config (minions-mode 1))
 
 (use-package default-text-scale
   :init (default-text-scale-mode))

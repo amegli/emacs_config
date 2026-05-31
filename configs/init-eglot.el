@@ -17,11 +17,12 @@
   :config
   (global-flycheck-eglot-mode 1))
 
-(use-package eldoc-box)
+(use-package eldoc-box
+  :bind (:map evil-normal-state-map
+         ("K" . eldoc-box-help-at-point)))
+
 (use-package consult-eglot)
 
-(setq eldoc-echo-area-prefer-doc-buffer t)
 (setq eldoc-idle-delay .1)
-(setq eldoc-echo-area-use-multiline-p 4)
 
 (provide 'init-eglot)
