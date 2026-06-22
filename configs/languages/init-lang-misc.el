@@ -4,6 +4,7 @@
 (use-package purescript-mode)
 (use-package brainfuck-mode)
 (use-package markdown-mode)
+(use-package terraform-mode)
 
 (setq-default tab-width 2)
 (setq-default evil-shift-width 2)
