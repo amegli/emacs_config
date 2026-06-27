@@ -18,8 +18,10 @@
   (global-flycheck-eglot-mode 1))
 
 (use-package eldoc-box
-  :bind (:map evil-normal-state-map
-         ("K" . eldoc-box-help-at-point)))
+  :commands eldoc-box-help-at-point
+  :init
+  (with-eval-after-load 'evil
+    (evil-define-key 'normal 'global "K" #'eldoc-box-help-at-point)))
 
 (use-package consult-eglot)
 

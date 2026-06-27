@@ -6,17 +6,16 @@
   (setq gptel-include-tool-results t))
 (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
 
-(use-package agent-shell
-  :ensure t
-  :ensure-system-package
-  ((claude-agent-acp . "npm install -g @zed-industries/claude-agent-acp"))
+(use-package claude-code-ide
+  :ensure nil
+  :straight (claude-code-ide :type git :host github
+                             :repo "manzaltu/claude-code-ide.el")
+  :custom
+  (claude-code-ide-terminal-backend 'eat)
+  (claude-code-ide-diagnostics-backend 'auto)
+  (claude-code-ide-enable-execute-code t)
   :config
-  (setq agent-shell-anthropic-authentication
-        (agent-shell-anthropic-make-authentication :login t))
-  (setq agent-shell-anthropic-claude-environment
-        (agent-shell-make-environment-variables :inherit-env t))
-  (setq agent-shell-session-strategy 'prompt)
-  (evil-define-key 'insert agent-shell-mode-map (kbd "RET") #'newline)
-  (evil-define-key 'normal agent-shell-mode-map (kbd "RET") #'comint-send-input))
+  (with-eval-after-load 'evil
+    (add-to-list 'evil-buffer-regexps '("\\*claude-code\\[" . insert))))
 
 (provide 'init-ai)

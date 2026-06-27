@@ -116,6 +116,14 @@
 		"cn" 'xref-find-references-and-replace
 		"ch" 'hoogle
 
+		"cl" (cons "claude" (make-sparse-keymap))
+		"cll" 'claude-code-ide-menu          ; transient: everything
+		"clc" 'claude-code-ide               ; start / continue in this project
+		"clt" 'claude-code-ide-toggle        ; show/hide the Claude window
+		"cls" 'claude-code-ide-switch-to-buffer
+		"clm" 'claude-code-ide-insert-at-mentioned ; send region as an @mention
+		"cle" 'claude-code-ide-send-escape
+
 		"u" (cons "ui" (make-sparse-keymap))
 		"ut" 'consult-theme
 		"uf" (cons "text" (make-sparse-keymap))
@@ -126,12 +134,5 @@
 		"v" 'vundo
 		)
 	)
-
-(add-hook 'eglot-managed-mode-hook
-          (lambda ()
-            (general-define-key
-             :states '(normal visual motion emacs)
-             :keymaps 'local
-             "K" #'eldoc-box-help-at-point)))
 
 (provide 'init-keys)

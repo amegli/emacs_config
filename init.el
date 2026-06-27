@@ -35,6 +35,12 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+;; This Emacs ships transient 0.8.7 in its baked-in site-lisp, but claude-code-ide
+;; needs >= 0.9.0 (transient--set-layout).  Force straight's newer transient onto
+;; the load-path and into memory now, before magit (init-git) requires the old one.
+(straight-use-package 'transient)
+(require 'transient)
+
 (add-to-list 'load-path (expand-file-name "~/.config/emacs/configs"))
 (add-to-list 'load-path (expand-file-name "~/.config/emacs/configs/custom"))
 (add-to-list 'load-path (expand-file-name "~/.config/emacs/configs/languages"))
@@ -46,6 +52,7 @@
 (require 'mark-ring)
 
 (require 'init-flycheck)
+
 ;; Pick one
 (require 'init-eglot)
 ;; (require 'init-lsp)
@@ -69,3 +76,7 @@
 (require 'init-terminal)
 (require 'init-dashboard)
 (put 'downcase-region 'disabled nil)
+
+(require 'server)
+(unless (server-running-p)
+  (server-start))
