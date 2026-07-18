@@ -1,24 +1,7 @@
 (setq native-comp-async-report-warnings-errors 'silent)
 
-(require 'package)
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-												 ("org" . "https://orgmode.org/elpa/")
-												 ("elpa" . "https://elpa.gnu.org/packages/")))
-(package-initialize)
-(unless package-archive-contents
-  (package-refresh-contents))
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-(require 'use-package)
-(setq use-package-always-ensure t)
-
-(use-package quelpa)
-(quelpa
- '(quelpa-use-package
-   :fetcher git
-   :url "https://github.com/quelpa/quelpa-use-package.git"))
-(require 'quelpa-use-package)
-
+;; straight.el is the sole package manager (package.el is disabled in
+;; early-init.el; quelpa was removed in the straight migration).
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name
@@ -34,6 +17,10 @@
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
+
+;; Every (use-package ...) installs via straight unless :straight nil.
+(straight-use-package 'use-package)
+(setq straight-use-package-by-default t)
 
 ;; This Emacs ships transient 0.8.7 in its baked-in site-lisp, but claude-code-ide
 ;; needs >= 0.9.0 (transient--set-layout).  Force straight's newer transient onto

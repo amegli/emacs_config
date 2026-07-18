@@ -116,7 +116,6 @@
   (setq consult-narrow-key "<"))
 
 (use-package embark
-  :ensure t
   :bind
   (("C-." . embark-act)
    ("C-;" . embark-dwim)
@@ -130,7 +129,6 @@
                  (window-parameters (mode-line-format . none)))))
 
 (use-package embark-consult
-  :ensure t
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
@@ -138,8 +136,7 @@
   :config
   (setq wgrep-auto-save-buffer t))
 
-(use-package expand-region
-  :ensure t)
+(use-package expand-region)
 
 (use-package embrace)
 (add-hook 'org-mode-hook #'embrace-org-mode-hook)
@@ -169,6 +166,7 @@
 (advice-add #'corfu-insert :after #'corfu-send-shell)
 
 (use-package emacs
+  :straight nil
   :init
   (setq completion-cycle-threshold 3)
   (setq tab-always-indent 'complete))

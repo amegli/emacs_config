@@ -7,7 +7,6 @@
 (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
 
 (use-package claude-code-ide
-  :ensure nil
   :straight (claude-code-ide :type git :host github
                              :repo "manzaltu/claude-code-ide.el")
   :custom

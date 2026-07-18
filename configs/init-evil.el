@@ -12,7 +12,6 @@
 
 (use-package evil-collection
   :after evil
-  :ensure t
   :config
   (evil-collection-init))
 
@@ -29,7 +28,6 @@
 (global-evil-mc-mode 1) 
 
 (use-package evil-surround
-  :ensure t
   :config
   (global-evil-surround-mode 1))
 

@@ -1,4 +1,3 @@
-(use-package elixir-mode
-  :ensure t)
+(use-package elixir-mode)
 
 (provide 'init-elixir)

@@ -8,7 +8,6 @@
   (setq projectile-switch-project-action #'projectile-dired))
 
 (use-package perspective
-  :ensure t
   :straight t
   :custom
   (persp-mode-prefix-key (kbd "C-c M-p")) 

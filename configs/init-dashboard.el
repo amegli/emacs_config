@@ -1,5 +1,4 @@
 (use-package dashboard
-  :ensure t
   :init
   (setq dashboard-banner-logo-title
 				(mapconcat #'identity

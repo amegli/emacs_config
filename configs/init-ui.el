@@ -49,14 +49,13 @@
 (advice-add 'set-face-attribute :filter-args #'my/ember-fix-face-args)
 
 (use-package ember-theme
-  :vc (:url "https://github.com/ember-theme/emacs" :rev :newest)
+  :straight (ember-theme :type git :host github :repo "ember-theme/emacs")
   :config
   (add-to-list 'custom-theme-load-path
                (file-name-directory (locate-library "ember-theme")))
   (load-theme 'ember t))
 
 (use-package doom-modeline
-  :ensure t
   :init (doom-modeline-mode 1)
   :config (setq doom-modeline-minor-modes t))
 

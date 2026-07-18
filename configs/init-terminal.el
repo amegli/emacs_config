@@ -1,7 +1,6 @@
 (advice-add 'eshell-life-is-too-much :around #'mgli/close-bottom-eshell)
 
-(use-package vterm
-  :ensure t)
+(use-package vterm)
 
 (use-package eat
 	:straight t
@@ -16,7 +15,8 @@
 
 (use-package eshell-git-prompt)
 (use-package eshell
-  :hook 
+  :straight nil
+  :hook
   (eshell-pre-command-hook . eshell-save-some-history)
   :config
   (with-eval-after-load 'esh-opt
@@ -47,7 +47,6 @@
 
 (use-package eshell-syntax-highlighting
   :after eshell-mode
-  :ensure t 
   :config
   (eshell-syntax-highlighting-global-mode +1))
 
