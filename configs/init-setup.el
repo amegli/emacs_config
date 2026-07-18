@@ -18,6 +18,13 @@
   (make-directory mgli-auto-save-folder t))
 (setq auto-save-file-name-transforms `((".*" , mgli-auto-save-folder t)))
 
+;; Keep unmodified buffers in sync with changes on disk (git switches,
+;; external editors, sync tools). Conflict prompts now only appear when
+;; both the buffer and the file have changed.
+(global-auto-revert-mode 1)
+(setq global-auto-revert-non-file-buffers t
+      auto-revert-verbose nil)
+
 (setq ring-bell-function 'ignore)
 
 (let ((rbenv-shims (expand-file-name "~/.rbenv/shims")))
