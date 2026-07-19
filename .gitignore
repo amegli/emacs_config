@@ -76,3 +76,4 @@ tags
 
 .DS_Store
 /.agent-shell/
+/.claude-agent-shell/

@@ -8,7 +8,6 @@
 (setq inhibit-startup-message t)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
-(set-fringe-mode 10)
 (menu-bar-mode -1)
 
 (set-face-attribute 'default nil :font "Hack Nerd Font Mono")
@@ -53,7 +52,7 @@
   :config
   (add-to-list 'custom-theme-load-path
                (file-name-directory (locate-library "ember-theme")))
-  (load-theme 'ember t))
+  (load-theme 'ember-light t))
 
 (use-package doom-modeline
   :init (doom-modeline-mode 1)
@@ -83,7 +82,6 @@
 								eshell-mode-hook))
   (add-hook mode 'disable-line-numbers-mode-hook))
 
-(fringe-mode 0)
 (column-number-mode)
 
 (use-package spacious-padding

@@ -67,7 +67,7 @@
          ("C-M-#" . consult-register)
          ("M-y" . consult-yank-pop)                ;; orig. yank-pop
          ("M-g e" . consult-compile-error)
-         ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
+         ("M-g f" . consult-flycheck)
          ("M-g g" . consult-goto-line)             ;; orig. goto-line
          ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
          ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
@@ -114,6 +114,9 @@
    :preview-key '(:debounce 0.4 any))
 
   (setq consult-narrow-key "<"))
+
+(use-package consult-flycheck
+  :after (consult flycheck))
 
 (use-package embark
   :bind
@@ -164,6 +167,13 @@
     (comint-send-input))))
 
 (advice-add #'corfu-insert :after #'corfu-send-shell)
+
+;; Extra completion-at-point backends for corfu.
+(use-package cape
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-keyword))
 
 (use-package emacs
   :straight nil

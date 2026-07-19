@@ -10,7 +10,8 @@
   :straight (claude-code-ide :type git :host github
                              :repo "manzaltu/claude-code-ide.el")
   :custom
-  (claude-code-ide-terminal-backend 'eat)
+  (claude-code-ide-terminal-backend 'ghostel)
+  (claude-code-ide-ghostel-evil-escape nil)
   (claude-code-ide-diagnostics-backend 'auto)
   (claude-code-ide-enable-execute-code t)
   :config

@@ -18,12 +18,18 @@
   (make-directory mgli-auto-save-folder t))
 (setq auto-save-file-name-transforms `((".*" , mgli-auto-save-folder t)))
 
-;; Keep unmodified buffers in sync with changes on disk (git switches,
-;; external editors, sync tools). Conflict prompts now only appear when
-;; both the buffer and the file have changed.
+;; Keep unmodified buffers in sync with changes on disk
 (global-auto-revert-mode 1)
 (setq global-auto-revert-non-file-buffers t
       auto-revert-verbose nil)
+
+;; Persist minibuffer history across sessions
+(use-package savehist
+  :straight nil
+  :init (savehist-mode 1))
+
+;; Reopen files at the previous cursor position.
+(save-place-mode 1)
 
 (setq ring-bell-function 'ignore)
 

@@ -2,6 +2,10 @@
 
 (use-package vterm)
 
+(use-package ghostel)
+(use-package evil-ghostel
+  :hook (ghostel-mode . evil-ghostel-mode))
+
 (use-package eat
 	:straight t
   :custom

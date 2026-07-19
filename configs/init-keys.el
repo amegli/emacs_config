@@ -123,6 +123,7 @@
 		"cls" 'claude-code-ide-switch-to-buffer
 		"clm" 'claude-code-ide-insert-at-mentioned ; send region as an @mention
 		"cle" 'claude-code-ide-send-escape
+		"clr" 'claude-code-ide-resume
 
 		"u" (cons "ui" (make-sparse-keymap))
 		"ut" 'consult-theme

@@ -28,7 +28,7 @@
 						 (<= char ?z)
 						 (not (member char mgli-mark-ring)))
 		(push char mgli-mark-ring)
-		(1+ mgli-mark-ring-index)))
+		(setq mgli-mark-ring-index (1+ mgli-mark-ring-index))))
 
 (advice-add 'evil-set-marker :after #'mgli-push-mark-ring)
 

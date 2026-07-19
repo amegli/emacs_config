@@ -40,9 +40,7 @@
 
 (require 'init-flycheck)
 
-;; Pick one
 (require 'init-eglot)
-;; (require 'init-lsp)
 
 (require 'init-keys)
 (require 'init-ui)

@@ -22,7 +22,8 @@
 (evil-snipe-override-mode 1)
 (add-hook 'magit-mode-hook 'turn-off-evil-snipe-override-mode)
 
-(use-package evil-vimish-fold)
+(use-package evil-vimish-fold
+  :config (global-evil-vimish-fold-mode))
 
 (use-package evil-mc)
 (global-evil-mc-mode 1) 
