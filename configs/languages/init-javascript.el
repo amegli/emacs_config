@@ -11,7 +11,7 @@
   :commands jest-test-mode
   :hook (typescript-mode js-mode tsx-ts-mode typescript-ts-mode))
 
-(add-hook 'js-mode-hook
+(add-hook 'js-base-mode-hook
 					(lambda ()
 						(setq js-indent-level 2)))
 

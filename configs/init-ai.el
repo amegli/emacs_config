@@ -11,7 +11,7 @@
                              :repo "manzaltu/claude-code-ide.el")
   :custom
   (claude-code-ide-terminal-backend 'ghostel)
-  (claude-code-ide-ghostel-evil-escape nil)
+  (claude-code-ide-ghostel-evil-escape 'evil)
   (claude-code-ide-diagnostics-backend 'auto)
   (claude-code-ide-enable-execute-code t)
   :config

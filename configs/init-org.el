@@ -20,6 +20,15 @@
 (use-package org-modern
   :config 
   (setq
+   ;; --- Headline bullets --------------------------------------------------
+   ;; Show a decorative bullet per level (not a fold triangle) so nesting
+   ;; depth reads instantly.  Fill state AND shape both change each level.
+   org-modern-star 'replace
+   org-modern-replace-stars "◉○◆◇▸•··"
+   org-modern-hide-stars 'leading
+   ;; --- Plain-list bullets ------------------------------------------------
+   ;; `-' lists (your most common) render as a real bullet instead of a dash.
+   org-modern-list '((?- . "•") (?+ . "◦") (?* . "▹"))
    org-auto-align-tags nil
    org-tags-column 0
    org-catch-invisible-edits 'show-and-error
@@ -41,6 +50,36 @@
   )
 
 (setq org-agenda-files '("~/Documents/org"))
+
+;; --- Capture -----------------------------------------------------------------
+;; Fast, low-friction capture into todo.org's Inbox; process/refile later.
+(setq org-directory "~/Documents/org")
+(setq org-default-notes-file "~/Documents/org/todo.org")
+
+(setq org-capture-templates
+      '(("t" "Todo" entry
+         (file+headline "~/Documents/org/todo.org" "Inbox")
+         "* TODO %?\n  %U\n  %a"
+         :empty-lines 1)
+
+        ;; Meeting notes scaffold. Targets the current year's meeting file
+        ;; automatically, then jumps into it so notes are taken in the real
+        ;; buffer (not a cramped capture popup).
+        ("m" "Meeting" entry
+         (file (lambda () (expand-file-name (format-time-string "%Y_meetings.org")
+                                            org-directory)))
+         "* %^{Meeting} %t :meeting:"
+         :immediate-finish t
+         :jump-to-captured t
+         :empty-lines 1)))
+
+;; --- Refile ------------------------------------------------------------------
+;; Where captured Inbox items can be moved. Offer headings up to level 3
+;; across every agenda file, with completion showing the full path.
+(setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
+(setq org-refile-use-outline-path 'file)   ; show file name in refile prompt
+(setq org-outline-path-complete-in-steps nil) ; complete whole path at once
+(setq org-refile-allow-creating-parent-nodes 'confirm)
 
 (setq org-use-sub-superscripts nil)
 (setq org-export-with-sub-superscripts nil)

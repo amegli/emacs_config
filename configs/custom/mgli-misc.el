@@ -17,15 +17,22 @@
 		(consult-ripgrep nil (when current_symbol (symbol-name current_symbol)))))
 
 (defun mgli/org-heading-setup ()
-  (dolist (face '((org-level-1 . 1.5)
-                  (org-level-2 . 1.3)
-                  (org-level-3 . 1.2)
-                  (org-level-4 . 1.1)
-                  (org-level-5 . 1.0)
-                  (org-level-6 . 1.0)
-                  (org-level-7 . 1.0)
-                  (org-level-8 . 1.0)))
-    (set-face-attribute (car face) nil :font "Hack Nerd Font" :weight 'regular :height (cdr face))))
+  "Scale and weight org headings so nesting depth reads at a glance.
+Top three levels are bold anchors; deeper levels stay regular so
+long, deeply-nested notes don't turn into a wall of large bold text."
+  (dolist (spec '((org-level-1 1.40 bold)
+                  (org-level-2 1.25 bold)
+                  (org-level-3 1.15 bold)
+                  (org-level-4 1.10 regular)
+                  (org-level-5 1.05 regular)
+                  (org-level-6 1.00 regular)
+                  (org-level-7 1.00 regular)
+                  (org-level-8 1.00 regular)))
+    (cl-destructuring-bind (face height weight) spec
+      (set-face-attribute face nil
+                           :font "Hack Nerd Font"
+                           :weight weight
+                           :height height))))
 
 (defun mgli/bottom-eshell (terminal-func)
   (interactive)

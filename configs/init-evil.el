@@ -8,7 +8,13 @@
   (evil-mode 1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state))
 
-(define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
+;; Disabled 2026-07-19: this shadowed `indent-for-tab-command' (evil's
+;; insert map outranks corfu's), so TAB never completed or re-indented —
+;; only inserted whitespace. Removing it lets TAB indent-or-complete
+;; (tab-always-indent 'complete) and accept corfu popups. `tab-to-tab-stop'
+;; is still on M-i, and C-q TAB inserts a literal tab.
+;; To restore the old dumb-tab behavior, uncomment the next line:
+;; (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
 
 (use-package evil-collection
   :after evil
