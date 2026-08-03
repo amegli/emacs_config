@@ -16,6 +16,12 @@
   (claude-code-ide-enable-execute-code t)
   :config
   (with-eval-after-load 'evil
-    (add-to-list 'evil-buffer-regexps '("\\*claude-code\\[" . insert))))
+    (add-to-list 'evil-buffer-regexps '("\\*claude-code\\[" . insert)))
+  ;; Dedicate the Claude window so display-buffer never puts other buffers in it
+  (advice-add 'claude-code-ide--display-buffer-in-side-window :filter-return
+              (lambda (window)
+                (when (window-live-p window)
+                  (set-window-dedicated-p window t))
+                window)))
 
 (provide 'init-ai)

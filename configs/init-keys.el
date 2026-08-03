@@ -69,6 +69,13 @@
 		"gd" (cons "diff" (make-sparse-keymap))
 		"gdr" 'magit-diff-range
 		"gdf" 'magit-diff-paths
+		"gm" (cons "smerge" (make-sparse-keymap))
+		"gmn" 'smerge-next
+		"gmp" 'smerge-prev
+		"gmu" 'smerge-keep-upper
+		"gml" 'smerge-keep-lower
+		"gmc" 'smerge-keep-current
+		"gma" 'smerge-keep-all
 
 		"t" (cons "terminal" (make-sparse-keymap))
 		"te" 'eshell

@@ -140,4 +140,7 @@
 
 (setq markdown-command "pandoc")
 
+;; Undo/redo window layout changes with C-c <left> / C-c <right>
+(winner-mode 1)
+
 (provide 'init-ui)

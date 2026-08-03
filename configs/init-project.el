@@ -23,5 +23,6 @@
 (setq dired-auto-revert-buffer t)
 (setq dired-kill-when-opening-new-dired-buffer t)
 (setq dired-dwim-target t)
+(setq wdired-allow-to-change-permissions 'advanced)
 
 (provide 'init-project)
