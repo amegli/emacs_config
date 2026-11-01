@@ -18,6 +18,13 @@
 
 (use-package evil-collection
   :after evil
+  :init
+  ;; evil-collection 2.0 (PR #928) made RET submit only in normal state in
+  ;; REPL buffers (eshell, comint, ...), so Enter in insert state just
+  ;; inserted a newline. Restore submit-on-Enter while typing.
+  (setq evil-collection-binding-overrides
+        '((repl-submit  :state insert)
+          (repl-newline :state normal)))
   :config
   (evil-collection-init))
 

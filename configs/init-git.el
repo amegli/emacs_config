@@ -5,7 +5,10 @@
   (remove-hook 'magit-status-sections-hook 'magit-insert-unpushed-to-pushremote)
   (remove-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-pushremote)
   (remove-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-upstream)
-  (remove-hook 'magit-status-sections-hook 'magit-insert-unpushed-to-upstream-or-recent))
+  (remove-hook 'magit-status-sections-hook 'magit-insert-unpushed-to-upstream-or-recent)
+  ;; S-RET: visit file/hunk in the other window, keeping magit status visible
+  (define-key magit-file-section-map (kbd "S-<return>") #'magit-diff-visit-file-other-window)
+  (define-key magit-hunk-section-map (kbd "S-<return>") #'magit-diff-visit-file-other-window))
 
 (use-package forge
   :after magit)

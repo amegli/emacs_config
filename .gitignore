@@ -49,6 +49,7 @@ dist/
 /projectile-frecency.eld
 /eshell/history
 /eshell/lastdir
+/forge-database.sqlite
 
 # --- Backups & auto-saves created by init-setup.el -------------------------
 /backups/
