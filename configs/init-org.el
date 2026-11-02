@@ -10,6 +10,11 @@
 (setq org-todo-keywords
       '((sequence "TODO" "IN-PROGRESS" "REVIEW" "|" "DONE" "CANCELED")))
 
+;; Persist TODO state changes to disk the instant they happen — including
+;; ones made from the agenda, which otherwise just mark the source buffer
+;; modified and leave saving to you (the classic "my DONE didn't stick" trap).
+(add-hook 'org-after-todo-state-change-hook #'save-buffer)
+
 (use-package evil-org
   :after org
   :hook (org-mode . evil-org-mode)
