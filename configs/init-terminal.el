@@ -1,6 +1,9 @@
 (advice-add 'eshell-life-is-too-much :around #'mgli/close-bottom-eshell)
 
-(use-package vterm)
+;; vterm comes from Nix (programs.emacs.extraPackages in home-config) with its
+;; module already compiled, so straight must not install its own copy.
+(use-package vterm
+  :straight nil)
 
 (use-package ghostel)
 (use-package evil-ghostel
